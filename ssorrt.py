@@ -1,57 +1,70 @@
-def bubblesort(mas):
-    n=len(mas)
+from sys import setrecursionlimit as lim
+lim(3000)
+
+def bubble_sort(a):
+    n=len(a)
     unordered=True
     while unordered:
         unordered=False
         for j in range(n-1):
-            if mas[j]>mas[j+1]:
-                mas[j],mas[j+1]=mas[j+1],mas[j]
+            if a[j]>a[j+1]:
+                a[j],a[j+1]=a[j+1],a[j]
                 unordered=True
         n-=1
-    return mas
+    return a
 
-def selectsort(mas):
-    for i in range(len(mas)-1):
+def selectsort(a):
+    for i in range(len(a)-1):
         imin=i
-        for j in range(i+1,len(mas)):
-            if mas[j]<mas[imin]:
+        for j in range(i+1,len(a)):
+            if a[j]<a[imin]:
                 imin=j
-        mas[i],mas[imin]=mas[imin],mas[i]
-    return mas
+        a[i],a[imin]=a[imin],a[i]
+    return a
 
-def insertionsort(mas):
-    for i in range(1,len(mas)):
-        tmp=mas[i]
+def insertionsort(a):
+    for i in range(1,len(a)):
+        tmp=a[i]
         j=i-1
-        while j>=0 and mas[j]>tmp:
-            mas[j+1]=mas[j]
+        while j>=0 and a[j]>tmp:
+            a[j+1]=a[j]
             j-=1
-        mas[j+1]=tmp
-    return mas
+        a[j+1]=tmp
+    return a
 
-def quicksort(mas,low,high):
-    if low<high:
-        pivot_index=partition(mas,low,high)
-        quick_sort(mas,low,pivot_index-1)
-        quick_sort(mas,pivot_index+1,high)
-def partition(mas,low,high):
-    pivot=mas[low]
-    i=low+1
-    for j in range(low+1,high+1):
-        if mas[j]<=pivot:
-            mas[i],mas[j]=mas[j],mas[i]
+def quicksort(a,l,h):
+    if l<h:
+        pivotindex=partition(a,l,h)
+        quicksort(a,l,pivotindex-1)
+        quicksort(a,pivotindex+1,h)
+def partition(a,l,h):
+    pivot=a[l]
+    i=l+1
+    for j in range(l+1,h+1):
+        if a[j]<=pivot:
+            a[i],a[j]=a[j],a[i]
             i+=1
-    mas[low],mas[i-1] = mas[i-1],mas[low]
+    a[l],a[i-1] = a[i-1],a[l]
     return i-1
-    
-def cocktail(mas): 
-    up = range(len(mas) - 1)       
-    while True:
-        for indices in (up, reversed(up)):
-            swapped = False
-            for i in indices:
-                if mas[i] > mas[i+1]:  
-                    mas[i],mas[i+1] = mas[i+1],mas[i]
-                    swapped = True
-            if not swapped:
-                return mas
+
+def cocktailSort(a):
+    n=len(a)
+    swapp=True
+    st=0
+    end=n-1
+    while swapp==True:
+        swapp=False
+        for i in range (st, end):
+            if a[i] > a[i+1] :
+                a[i], a[i+1]= a[i+1], a[i]
+                swapp=True
+        if swapp==False:
+            break
+        swapp=False
+        end=end-1
+        for i in range(end-1, st-1,-1):
+            if a[i] > a[i+1]:
+                a[i], a[i+1] = a[i+1], a[i]
+                swapp=True
+        st=st+1
+    return a
