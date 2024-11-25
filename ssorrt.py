@@ -1,7 +1,7 @@
 from sys import setrecursionlimit as lim
 lim(3000)
 
-def bubble_sort(a):
+def bubblesort(a):
     n=len(a)
     unordered=True
     while unordered:
