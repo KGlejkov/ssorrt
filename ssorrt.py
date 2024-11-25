@@ -47,7 +47,7 @@ def partition(a,l,h):
     a[l],a[i-1] = a[i-1],a[l]
     return i-1
 
-def cocktailSort(a):
+def cocktailsort(a):
     n=len(a)
     swapp=True
     st=0
