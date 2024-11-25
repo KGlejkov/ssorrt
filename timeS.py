@@ -8,7 +8,7 @@ for j in a:
     mas.append([random.randint(-100,100) for _ in range(n)])
     print(n)
 st=time.time()
-print(start)
+print(st)
 #sort.bubblesort(mas[1])
 #sort.selectsort(mas[3])
 #sort.insertionsort(mas[3])
