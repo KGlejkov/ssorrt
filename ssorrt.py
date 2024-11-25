@@ -63,7 +63,7 @@ def cocktailsort(a):
         swapp=False
         end=end-1
         for i in range(end-1, st-1,-1):
-            if a[i] > a[i+1]:
+            if a[i] < a[i+1]:
                 a[i], a[i+1] = a[i+1], a[i]
                 swapp=True
         st=st+1
